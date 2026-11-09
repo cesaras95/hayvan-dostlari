@@ -1,0 +1,193 @@
+/* ===== Genel ===== */
+body {
+  margin: 0;
+  padding: 12px 16px 24px;
+  background: #FFF8EE;
+  font-family: "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
+  text-align: center;
+  /* Çift dokununca yakınlaşmayı ve uzun basınca seçim menüsünü engeller */
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button { font-family: inherit; }
+
+.gizli { display: none !important; }
+
+/* ===== Üst bar ===== */
+.ust {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 700px;
+  margin: 0 auto 14px;
+  min-height: 60px;
+}
+
+h1 {
+  flex: 1;
+  color: #E07A5F;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Ev düğmesi ve mod düğmeleri: büyük, yuvarlak */
+.yuvarlak-buton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #FFFFFF;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mod-secici { display: flex; gap: 8px; }
+
+/* Seçili mod: renkli halka */
+.mod.aktif {
+  background: #FFE3D8;
+  outline: 4px solid #E07A5F;
+}
+
+/* ===== Bul modu: soruyu tekrarla ===== */
+.soru-satiri { margin: 0 auto 14px; }
+
+.tekrar-buton {
+  border: none;
+  border-radius: 40px;
+  padding: 10px 36px;
+  font-size: 2.2rem;
+  background: #FFE3D8;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+/* ===== Kart ızgarası ===== */
+.izgara {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .izgara { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Tek bir kart */
+.kart {
+  background: var(--renk);
+  border: none;
+  border-radius: 28px;
+  padding: 18px 8px 14px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 170px;
+}
+
+.kart:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Kartın resmi: emoji, renk dairesi ya da rakam */
+.resim {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 4.6rem;
+  line-height: 1;
+}
+
+/* Renkler kategorisindeki büyük renk dairesi */
+.boya {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 5px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Sayılar kategorisi: kocaman rakam + yıldızlar */
+.rakam {
+  font-size: 4.2rem;
+  font-weight: bold;
+  color: #3D5A80;
+}
+.yildizlar {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  max-width: 130px;     /* 6'dan fazla yıldız iki satıra insin */
+  line-height: 1.2;
+}
+
+/* Kart yazıları: Türkçe büyük, İngilizce altında */
+.ad {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #444;
+}
+.en {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #E07A5F;
+}
+
+/* ===== Animasyonlar ===== */
+
+/* Doğru dokunuş: zıpla */
+.zipla .resim { animation: zipla 0.7s ease; }
+
+@keyframes zipla {
+  0%   { transform: translateY(0) rotate(0) scale(1); }
+  25%  { transform: translateY(-28px) rotate(-10deg) scale(1.15); }
+  50%  { transform: translateY(0) rotate(8deg) scale(1); }
+  70%  { transform: translateY(-10px) rotate(-5deg); }
+  100% { transform: translateY(0) rotate(0) scale(1); }
+}
+
+/* Bul modunda yanlış kart: hafifçe "hayır" der gibi sallanır */
+.salla { animation: salla 0.5s ease; }
+
+@keyframes salla {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+/* Doğru kart parlar */
+.dogru { outline: 6px solid #2DC653; }
+
+/* ===== Konfeti ===== */
+.konfeti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;   /* konfeti dokunuşları engellemesin */
+  overflow: hidden;
+}
+
+.parca {
+  position: absolute;
+  top: -50px;
+  font-size: 2rem;
+  animation: dus 1.8s ease-in forwards;
+}
+
+@keyframes dus {
+  to { transform: translateY(110vh) rotate(540deg); }
+}

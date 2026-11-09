@@ -1,0 +1,11 @@
+Bu klasöre 6 ses dosyasını tam olarak şu adlarla koy:
+
+kedi.mp3
+kopek.mp3
+inek.mp3
+ordek.mp3
+aslan.mp3
+koyun.mp3
+
+Türkçe harf (ö, ü, ç, ş, ı, ğ) kullanma, hepsi küçük harf olsun.
+Bir dosya eksikse oyun bozulmaz: o hayvan için telefon sesi taklit eder.

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <!-- Telefonda sayfanın ekran genişliğine uymasını sağlar -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- iPhone'da ana ekrana eklenince tam ekran açılsın -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Minik İngilizce">
+  <!-- Ana ekrana eklenince görünecek simge -->
+  <link rel="apple-touch-icon" href="icon.png">
+  <title>Minik İngilizce</title>
+  <!-- Boya ve mobilyalar: style.css -->
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+  <!-- Üst bar: ev düğmesi, başlık, mod seçici -->
+  <header class="ust">
+    <button id="evButon" class="yuvarlak-buton gizli" aria-label="Ana sayfa">🏠</button>
+    <h1 id="baslik">Minik İngilizce</h1>
+    <div id="modSecici" class="mod-secici gizli">
+      <!-- 👂 Dinle: dokun, adını duy.  🔍 Bul: "Where is the cat?" sorusuna doğru karta dokun -->
+      <button class="yuvarlak-buton mod aktif" data-mod="dinle" aria-label="Dinle">👂</button>
+      <button class="yuvarlak-buton mod" data-mod="bul" aria-label="Bul">🔍</button>
+    </div>
+  </header>
+
+  <!-- Bul modunda soruyu tekrar dinleme düğmesi -->
+  <div id="soruSatiri" class="soru-satiri gizli">
+    <button id="tekrarButon" class="tekrar-buton" aria-label="Soruyu tekrarla">🔊</button>
+  </div>
+
+  <!-- Kartların durduğu ızgara (grid). Kartları app.js oluşturur -->
+  <main class="izgara" id="izgara"></main>
+
+  <!-- Doğru cevapta yağan konfeti buraya eklenir -->
+  <div id="konfeti" class="konfeti"></div>
+
+  <!-- Beyin: dokununca ne olacağını söyleyen JavaScript -->
+  <script src="app.js?v=5"></script>
+</body>
+</html>
